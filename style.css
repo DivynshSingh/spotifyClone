@@ -1,0 +1,285 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+html{
+    cursor:default;
+}
+:root{
+    --rad:10px;
+}
+body{
+    font-family: "Rubik", sans-serif;
+    font-size: 17px;
+    padding:0px;
+    margin:0.5vw;
+    height:100%;
+    background-color: rgb(13, 12, 14);
+    color:white;
+}
+.container{
+    gap: 0.5vw;
+    height:97vh;
+}
+.left{
+    position: relative;
+    width: 25vw;
+    margin: 0px;
+    border-radius: 10px;
+    color:white;
+    background-color: rgb(13, 12, 14);
+    overflow-y: scroll;
+    scrollbar-width:none;
+}
+.left-up{
+    background-color: rgb(24, 24, 24);
+    border-radius: 10px;
+}
+.left-down{
+    background-color: rgb(24, 24, 24);
+    border-radius: 10px;
+    height: 300px;
+}
+.home{
+    border-radius:10px;
+}
+.home ul{
+    padding:15px 0px;
+    margin:30px 0px 0px 8px;
+}
+.home ul li{
+    margin: 20px;
+    list-style: none;
+    gap:12px;
+}
+.library{
+    margin:10px 0px 0px 0px;
+    border-radius:10PX;
+    height:60px;
+}
+.library ul{
+    padding:15px 0px;
+}
+.library ul li{
+    margin: 20px;
+    list-style: none;
+    gap:8px;
+}
+.msc-add{
+    all:unset;
+    position: absolute;
+    right:20px;
+    border-radius: 30px;
+}
+.msc-add:hover{
+    background-color: gainsboro;
+}
+.msc-add:active{
+    background-color: rgb(208, 208, 208);
+}
+.lib-msc{
+    height:70%; 
+    white-space: nowrap;
+    margin:3px 3px 0px 20px; 
+    overflow-y: scroll; 
+}
+.msc{
+    position: relative;
+    width:97%;
+    height:30px;
+    border-radius: 4px;
+    padding:4px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+.msc span{
+    padding: 0px 0px 0px 10px;
+}
+.msc span div{
+    display: none;
+    color:grey;
+}
+.msc:hover span div{
+    display: inherit;
+}
+.msc img{
+    height:inherit;
+    width: auto;
+    border-radius:3px;
+}
+.msc:hover {
+    height:40px;
+    background-color:rgba(43, 43, 43, 0.474);
+}
+.dur{
+    position:absolute;
+    right:10px;
+}
+.footer{
+    flex-direction: column;
+    justify-content: flex-end;
+    margin:30px;
+    width:17vw;
+    height:20vh;
+}
+.footer a{
+    color:rgb(154, 152, 152);
+    margin:0px 27px 0px 0px;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.right{
+    width: 75vw;
+    border-radius: 12px;
+    overflow-y: auto;
+}
+.header{
+    position: absolute; 
+    z-index: 1;
+    width:73.5vw;
+    background-color: rgb(27, 27, 27);
+    border-radius: 12px 12px 0px 0px;
+    height:4em;
+    font-size:15px;
+}
+.page-toggle{
+    position: absolute;
+    left:1vw;
+}
+.page-toggle button{
+    filter:invert();
+    background-color: rgb(221, 221, 221);
+    /* if a button can work it becomes style="background-color: rgb(255,255,255,0.6);" */
+    border-radius: 30px;
+    width:30px;
+    height:30px;
+}
+.acc-in{
+    position: absolute;
+    right:30px;
+}
+.sign-up{
+    color:rgb(162, 162, 162);
+    width:54px;
+}
+.sign-up:hover{
+    color: rgb(255,255,255);
+    font-weight: 450;
+}
+.log-in{
+    color:black;
+    background-color: white;
+    height:2.7em;
+    width: 5.6em;
+    margin:0px 7px;
+    text-align: center;
+    font-weight:400;
+    border-radius: 2em;
+}
+.log-in:hover{
+    font-weight:600;
+}
+.main-content{
+    scroll-behavior: smooth;
+    flex-direction: column;
+}
+.cards-list{
+    z-index:0;
+    margin:10px;
+    position:relative;
+}
+.cards-list div span{
+    font-size: 26px;
+    font-weight: 600;
+}
+.cards-list div button{
+    position:absolute;
+    right:0px;
+    font-size: 16px;
+    color:grey;
+}
+.cards-list div button:hover{
+    color:rgb(200, 200, 200);
+}
+.more-songs{
+    font-size: 15px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+.card{
+    width: 12em;
+    height: 16em;
+    padding:10px;
+    margin:2px;
+    position: relative;
+    transition: background-color ease-in-out 0.1s ;
+    border-radius: 10px;
+}
+.card:hover{
+    background-color: rgb(34, 34, 34);
+    opacity:1;
+}
+.card img{
+    border-radius: 5px;
+    width:inherit;
+    height: auto;
+}
+.card ul{
+    list-style: none;
+    margin:5px;
+}
+.card ul h4 button{
+    position: absolute;
+    right:1.8em;
+    bottom:4.5em;
+    background-color: #00dc4d;
+    border-radius: 50px;
+    height:50px;
+    width: 50px;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.15s ease-in-out;
+    /* ,opacity 0.3s ease-in-out, bottom 0.2s ease-in-out; */
+}
+.card:hover button{
+    bottom:5.5em; opacity:1;
+}
+.card button:hover{
+    transform: scale(1.1, 1.1);
+}
+.card ul p{
+    color:grey;
+}
+.player-par{
+    position: sticky;
+    bottom:10px;
+    height: 60px;
+}
+.player{
+    width: 97%;
+    background-color: rgba(27, 27, 27, 0.95);
+    border-radius: 4px;
+}
+#pause-play{
+    margin: 10px;
+    border-radius: 40px;
+    background-color: #00dc4d;
+}
+.playin-img{
+    width: 50px;
+    border-radius: 3px;
+    height: auto;
+}
+.playin-info{
+    font-size: 18px;
+    margin:5px;
+}
+.playin-info p{
+    font-size: 15px;
+}
+.msc-pre-nxt{
+    gap:10px;
+    position: absolute;
+    right:2em;
+}

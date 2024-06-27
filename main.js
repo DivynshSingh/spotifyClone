@@ -1,0 +1,122 @@
+console.log('scrpt starts');
+
+var playin=false;
+var aud;
+var songs=[];
+var ppSvg=document.getElementById('pause-play');
+ppSvg.addEventListener('click', function(){
+    if(playin){
+        aud.pause();
+        playin=false;
+        toggle();
+    }else{
+        try{aud.play();
+        playin=true;
+        toggle();
+    }catch(e){
+            console.log(e);
+        }
+    }
+});
+
+function toggle(){
+    if(!playin){
+    ppSvg.children[0].style.display='none';
+    ppSvg.children[1].style.display='block';
+    }else{
+    ppSvg.children[0].style.display='block';
+    ppSvg.children[1].style.display='none';
+}}
+async function getSongs(){
+    let a = await fetch('http://127.0.0.1:5500/songs/');
+    let response = await a.text();
+    let div = document.createElement('div');
+    div.innerHTML = response;
+    let links = div.getElementsByTagName('a');
+    let songs=[];
+    for(let i=1; i<links.length; i++){
+        if(links[i].href.endsWith(".mp3"))songs.push(links[i]);
+    }
+    return songs;
+}
+// let tempSong;
+// tempSong=new Audio(songs[0].href);
+async function getDuration(src){
+    return new Promise((res,rej)=>{
+        let a = new Audio(src);
+        a.addEventListener('loadedmetadata', ()=>{
+            res(a.duration);
+        });
+        a.addEventListener('error', (e)=>{
+            rej(e);
+        })
+    });
+}
+async function playSong(songSrc){
+//  await playMini();
+ if(!playin){
+ aud = new Audio(songSrc);
+ playin=true;
+ aud.play();
+}
+else{
+ if(songSrc!=aud.src){
+    aud.src = songSrc;
+    aud.play();
+ }else{
+    aud.pause();
+    playin=false;
+ }
+}
+toggle();
+// document.getElementById('pause-play').click();
+} 
+async function main(){
+    songs=await getSongs();
+
+    for(let i=0; i<songs.length; i++){
+        let htmlOfMsc=`<div class="msc flex items-center">
+        <img src="song1.jpeg" alt="">
+        <span>${(songs[i].title).slice(0, -4)}<div>${songs[i].title.slice(0, -4)}</div></span>
+        <div class="dur">dur</div>
+        <a href='${songs[i].href}' style="display:none">${songs[i].href}</a>
+        </div>`;
+
+        let div=document.createRange();
+        div=div.createContextualFragment(htmlOfMsc);
+        div=div.querySelector('.msc');
+        
+        div.querySelector('img').src='https://img.favpng.com/15/2/13/goofy-mickey-mouse-donald-duck-the-walt-disney-company-character-png-favpng-Xm04y6aaN019yXCyEUpcQYRqp.jpg';
+        // div.querySelector('span').innerText=(songs[i].title).slice(0, -4);
+        // let dur=await getDuration(songs[i].href);
+        try{
+            let dur=await getDuration(songs[i].href);
+            div.children[2].innerText=`${parseInt(dur/60)} : ${parseInt(dur%60)}`;
+        }catch{
+            console.log('could not get aud metaData');
+        }   
+        div.addEventListener('click', (e)=>{
+            // console.log(e.target.closest('.msc').querySelector('a').getAttribute('href'));
+            playSong(e.target.closest('.msc').querySelector('a').getAttribute('href'));
+        })
+        // document.getElementsByClassName('lib-msc')[0].addEventListener("click", (e)=>{
+        //     console.log(e.target.closest('.msc'))
+        // });//place it outside in js file, works too.
+        document.getElementsByClassName('lib-msc')[0].appendChild(div);
+        
+    }
+
+    
+    //play first song
+    // aud = new Audio(songs[3]);
+    // await aud.play();
+}
+main();
+main();
+async function playMini(){
+    return new Promise((res,rej)=>{let playBar=document.createElement('div');
+    playBar.classList.add('class', 'player flex items-center');
+    let html=``;
+    playBar.innerHTML=html;
+    document.querySelector('.player-par').appendChild(playBar);})
+}

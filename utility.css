@@ -1,0 +1,31 @@
+.border{
+ border:2px solid black;
+ /* margin:3px; */
+}
+button{
+    all:unset;
+}
+.invert{
+    filter:invert();
+}
+.flex{
+    display: flex;
+}
+.justify-center{
+    justify-content: center;
+}
+.items-center{
+    align-items: center;
+}
+.bg-color{
+    background-color: #121212;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(53, 53, 53, 0.5);
+    border-radius: 4px;
+}
