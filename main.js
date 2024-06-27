@@ -25,8 +25,7 @@ async function getSongs(){
     }
     return songs;
 }
-// let tempSong;
-// tempSong=new Audio(songs[0].href);
+
 async function getDuration(src){
     return new Promise((res,rej)=>{
         let a = new Audio(src);
@@ -55,7 +54,6 @@ else{
  }
 }
 toggle();
-// document.getElementById('pause-play').click();
 } 
 async function main(){
     songs=await getSongs();
