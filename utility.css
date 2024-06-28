@@ -24,7 +24,6 @@ button{
     width: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background-color: rgba(53, 53, 53, 0.5);
     border-radius: 4px;

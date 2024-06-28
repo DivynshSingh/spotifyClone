@@ -150,7 +150,9 @@ body{
 .page-toggle button{
     filter:invert();
     background-color: rgb(221, 221, 221);
-    /* if a button can work it becomes style="background-color: rgb(255,255,255,0.6);" */
+    /* if a button can work it becomes style="
+    background-color: rgb(255,255,255,0.6);
+    " */
     border-radius: 30px;
     width:30px;
     height:30px;
@@ -300,11 +302,44 @@ body{
     position: absolute;
     right:2em;
 }
+.msc-pre-nxt  :nth-child(1):active{
+    filter: invert(0.5);
+}
+.msc-pre-nxt  :nth-child(2):active{
+    filter: invert(0.5);
+}
+.vol-ctrl{
+    flex-direction: column;
+    position: absolute;
+    right:4.3em;
+    bottom:1em;
+    gap:1em;
+    display: none;
+}
+.volume{
+    filter:invert();
+}
+#volume-slider{
+    accent-color:#00dc4d;
+    outline: none;
+}
+.vol-range{
+    transform: scale(0.1, 0.1);
+    opacity:0;
+    transition:all 0.2s ease;
+}
+.vol-ctrl:hover :nth-child(1){
+    transform: scale(1,1);
+    opacity:1;
+}
 .hamburger{
     display: none;
 }
 @media (max-width: 1250px){
     .seekbar{
+        display: none;
+    }
+    .volume{
         display: none;
     }
     .playin-info {
