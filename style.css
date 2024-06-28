@@ -258,6 +258,7 @@ body{
 }
 .player{
     width: 97%;
+    position: relative;
     background-color: rgba(27, 27, 27, 0.95);
     border-radius: 4px;
 }
@@ -267,9 +268,9 @@ body{
     background-color: #00dc4d;
 }
 .playin-img{
-    width: 50px;
+    height: 50px;
+    width: auto;
     border-radius: 3px;
-    height: auto;
 }
 .playin-info{
     font-size: 18px;
@@ -278,8 +279,63 @@ body{
 .playin-info p{
     font-size: 15px;
 }
+.seekbar{
+    display: flex;
+    width:65%;
+    position: absolute;
+    left:300px;
+}
+#thumb_seek {
+    accent-color: #00dc4d;
+    outline: none;
+    width: 75%;
+    cursor:pointer;
+}
+.timer{
+    margin:12px;
+    width:180px;
+}
 .msc-pre-nxt{
     gap:10px;
     position: absolute;
     right:2em;
+}
+.hamburger{
+    display: none;
+}
+@media (max-width: 1250px){
+    .seekbar{
+        display: none;
+    }
+    .playin-info {
+        font-size:15px;
+    }
+    .left{
+        margin-left: -80vw;
+        opacity:0;
+        width:80vw;
+        transition: all 0.2s ease;
+    }
+    .footer{
+        width:50vw;
+        height: 36vh;
+        margin:30px;
+    }
+    .acc-in{
+        right:10px;
+    }
+    .header{
+        width:96vw;
+    }
+    .right{
+        width:99vw;
+        height: 100vh;
+    }
+    .page-toggle{
+        display:none;
+    }
+    .hamburger{
+        display:block;
+        margin-left:20px;
+    }
 }

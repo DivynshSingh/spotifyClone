@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>Audio Player with Seekbar</title>
+    <style>
+        #thumb_seek {
+            accent-color: coral;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="#seekbar">
+        <input id="thumb_seek" type="range" min="0" max="0" value="0" step="1">
+    </div>
+
+    <script>
+        let aud;
+        async function starts() {
+            const seekbar = document.querySelector('#thumb_seek');
+            aud = await new Audio('http://127.0.0.1:5500/songs/Cheri%20Cheri%20Lady-Modern%20Talking.mp3');
+            aud.addEventListener('loadedmetadata', function () {
+                console.log('Audio metadata loaded');
+                seekbar.setAttribute('max', aud.duration);
+            });
+            aud.addEventListener('timeupdate', function () {
+                seekbar.value = aud.currentTime;
+            });
+            seekbar.addEventListener('input', function () {
+                aud.currentTime = seekbar.value;
+            });
+        }
+        async function jump() { aud.currentTime = 100 + Math.random() * 90; }
+        (async () => {
+            await starts();
+            aud.play();
+            await jump();
+        })();
+
+    </script>
+    <button onclick="aud.play()">play</button>
+    <button onclick="aud.pause()">pause</button>
+</body>
+
+</html>
