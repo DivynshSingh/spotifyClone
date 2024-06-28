@@ -1,5 +1,3 @@
-console.log('scrpt starts');
-
 var playin = false;
 var aud;
 var songs=[];
@@ -44,7 +42,6 @@ function start_seekbar(audio) {
     const seekbar = document.querySelector('#thumb_seek');
     const timer=document.getElementsByClassName('timer')[0];
     audio.addEventListener('loadedmetadata', function () {
-        console.log('Audio metadata loaded');
         seekbar.setAttribute('max', audio.duration);
     });
     audio.addEventListener('timeupdate', function () {
@@ -64,7 +61,6 @@ function start_seekbar(audio) {
     document.querySelector('#volume-slider').addEventListener('input',handleVol)
 }
 async function playSong(address) {
-    // console.log(address.closest('.msc'));
     let songSrc = address.closest('.msc').querySelector('a').getAttribute('href');
     await playMini(address);
     if (!playin) {
@@ -166,19 +162,14 @@ let playMini = async (address) => {
             
             playBar.querySelector('.msc-pre-nxt').addEventListener('click', (e)=>{
                 let i=0;
-                console.log(e.target.closest('div')==e.currentTarget.children[0]);
                 for(i=0; i<songs.length; i++){
                     if(songs[i].href==aud.src){
-                        console.log('found current song', i);
                         break;}
                 }
-                console.log(document.getElementsByClassName('lib-msc')[0].children[i-1]);
                 if(e.target.closest('div')==e.currentTarget.children[0]){
                     if(i==0)i=songs.length;
-                    console.log('prev');
                     playSong(document.getElementsByClassName('lib-msc')[0].children[i-1]);
                 }else{
-                    console.log('nxxt');
                     if(i==songs.length-1)i=-1;
                     playSong(document.getElementsByClassName('lib-msc')[0].children[i+1]);
                 }
