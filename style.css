@@ -260,7 +260,7 @@ body{
 }
 .player{
     width: 97%;
-    position: relative;
+    position: absolute;
     background-color: rgba(27, 27, 27, 0.95);
     border-radius: 4px;
 }
@@ -298,15 +298,16 @@ body{
     width:180px;
 }
 .msc-pre-nxt{
+    filter:invert();
     gap:10px;
     position: absolute;
     right:2em;
 }
 .msc-pre-nxt  :nth-child(1):active{
-    filter: invert(0.5);
+    filter: invert(0.9);
 }
 .msc-pre-nxt  :nth-child(2):active{
-    filter: invert(0.5);
+    filter: invert(0.9);
 }
 .vol-ctrl{
     flex-direction: column;
@@ -363,8 +364,11 @@ body{
         width:96vw;
     }
     .right{
-        width:99vw;
-        height: 100vh;
+        width:  99vw;
+        height: 99vh;
+    }
+    .player-par{
+        top:92%;
     }
     .page-toggle{
         display:none;
