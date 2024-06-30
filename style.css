@@ -150,9 +150,6 @@ body{
 .page-toggle button{
     filter:invert();
     background-color: rgb(221, 221, 221);
-    /* if a button can work it becomes style="
-    background-color: rgb(255,255,255,0.6);
-    " */
     border-radius: 30px;
     width:30px;
     height:30px;
