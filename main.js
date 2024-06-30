@@ -15,7 +15,7 @@ function toggle() {
 }
 async function getSongs(folder) {
     let songs = [];
-    let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/`);
+    let a = await fetch(`/songs/${folder}/`);
     let response = await a.text();
     let div = document.createElement('div');
     div.innerHTML = response;
@@ -326,15 +326,25 @@ async function card_list_maker(heading, link) {
 }
 
 (async () => {
-    let songsFolder = await fetch('http://127.0.0.1:5500/songs/')
+    let songsFolder = await fetch('/songs/')
     songsFolder = await songsFolder.text();
     let div = document.createElement('div');
     div.innerHTML = songsFolder;
 
     let focus = div.querySelector('#files');//get all subfolders in songs(libraries)
-    for (let i = 1; i < focus.children.length; i++) {
-        console.log(focus.children[i].querySelector('a').href, focus.children[i].querySelector('a').title);
-        card_list_maker(focus.children[i].querySelector('a').title, focus.children[i].querySelector('a').href);
+    const allLinks=div.querySelectorAll('a');
+    var names=[];
+    var folderLinks=[];
+    allLinks.forEach(link=>{
+        if(link.href.endsWith('/')){
+            folderLinks.push(link);
+            names.push(link.innerText);
+        }
+    })
+    for (let i = 1; i < folderLinks.length; i++) {
+        console.log(folderLinks[i], names[i]);
+        // card_list_maker(focus.children[i].querySelector('a').title, focus.children[i].querySelector('a').href);
+        card_list_maker(folderLinks[i], names[i]);
         //make card-List for all subfolders/libraries
     }
 }
