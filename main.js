@@ -328,24 +328,21 @@ async function card_list_maker(heading, link) {
 (async () => {
     let songsFolder = await fetch('/songs/')
     songsFolder = await songsFolder.text();
+    // console.log(songsFolder);
     let div = document.createElement('div');
     div.innerHTML = songsFolder;
-
-    let focus = div.querySelector('#files');//get all subfolders in songs(libraries)
-    const allLinks=div.querySelectorAll('a');
-    var names=[];
-    var folderLinks=[];
-    allLinks.forEach(link=>{
-        if(link.href.endsWith('/')){
-            folderLinks.push(link);
-            names.push(link.innerText);
+    // console.log(div);
+    
+    let focus = div.querySelector('table').children[0];//get all subfolders in songs(libraries)
+    console.log(focus);
+    
+        for (let i = 2; i < focus.children.length; i++) {
+            console.log(focus.children[i].querySelector('a').href, focus.children[i].querySelector('a').innerText);
+            card_list_maker(focus.children[i].querySelector('a').innerText.slice(0, -1), focus.children[i].querySelector('a').href.slice(0, -1));
+            //make card-List for all subfolders/libraries
         }
-    })
-    for (let i = 1; i < folderLinks.length; i++) {
-        console.log(folderLinks[i], names[i]);
-        // card_list_maker(focus.children[i].querySelector('a').title, focus.children[i].querySelector('a').href);
-        card_list_maker(folderLinks[i], names[i]);
-        //make card-List for all subfolders/libraries
-    }
+    // card_list_maker('pop', 'http://127.0.0.1:3000/songs/pop');
+    // card_list_maker('recent', 'http://127.0.0.1:3000/songs/recent');
+    // this is not dynamic, hardcoded hai fix the dynamic portion line 329-343
 }
 )();
