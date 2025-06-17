@@ -1,6 +1,6 @@
 # Description
 
-This is a standard clone project. Mainly focuses on and showcases frontend/CSS skills.
+This is a standard clone project. Mainly deals with frontend/CSS skills.
 
 ### Desktop
 <p float="left">
